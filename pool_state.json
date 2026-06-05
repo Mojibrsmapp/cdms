@@ -1,0 +1,597 @@
+{
+  "updated_at": "2026-05-23T10:48:52.771119+00:00",
+  "target_active": 65,
+  "stats": {
+    "active": 15,
+    "limited": 16,
+    "failed": 34,
+    "untested": 0
+  },
+  "accounts": {
+    "9717198141": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:36:28.224939+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "8313164313": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:34:31.986006+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "8404089328": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:34:45.673699+00:00",
+      "limited_at": "2026-05-23T10:40:58.421659+00:00",
+      "error": "failed_login",
+      "retries": 1
+    },
+    "6989037295": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:33:57.411011+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "8714168238": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:35:34.025146+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "8413147855": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:34:50.827993+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "7695094334": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:30:19.071702+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "7696017556": {
+      "status": "limited",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:30:42.410434+00:00",
+      "limited_at": "2026-05-23T10:21:22.649163+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "9420227034": {
+      "status": "limited",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:43:45.822141+00:00",
+      "limited_at": "2026-05-23T10:21:23.098697+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "9221238139": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:38.697688+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "9320226214": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:45.588005+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "8714168984": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:28.194748+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "7900057883": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T18:46:14.777508+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "8917202054": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:29.363665+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "7695008551": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:29:54.122506+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "9621237965": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:03.779390+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 3
+    },
+    "9117200003": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-22T21:30:13.142924+00:00",
+      "limited_at": "2026-05-23T10:27:16.417849+00:00",
+      "error": "failed_login",
+      "retries": 13
+    },
+    "8707117418": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:27.067755+00:00",
+      "limited_at": null,
+      "error": "failed_no_result_html",
+      "retries": 16
+    },
+    "7897058451": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T18:45:52.337853+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "9321238504": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:44.444274+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "9319223631": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:41.006805+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "9217199321": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:40:07.526813+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "9111134534": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:35:45.294646+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "9320226886": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:46.546863+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "8614171119": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:35:04.751938+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "7797050987": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T18:44:31.010685+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "7492044978": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T19:32:14.077811+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "8101038917": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T18:47:11.577472+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "8101092831": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:35:12.677168+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "8513153167": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:43.184848+00:00",
+      "limited_at": null,
+      "error": "failed_no_result_html",
+      "retries": 17
+    },
+    "9421238977": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:35:51.517522+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "9212146744": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:36.362812+00:00",
+      "limited_at": null,
+      "error": "failed_no_result_html",
+      "retries": 16
+    },
+    "8001034187": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:33:35.018239+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "8302064405": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:29.648678+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "7694057951": {
+      "status": "limited",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:29:29.865321+00:00",
+      "limited_at": "2026-05-23T10:34:05.636270+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "7699075436": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:22.400430+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "9321238297": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:42.142867+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "8000097680": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:25.431501+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "9119224179": {
+      "status": "limited",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T18:52:45.474100+00:00",
+      "limited_at": "2026-05-23T10:21:24.082492+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "8714171134": {
+      "status": "limited",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T18:59:52.191834+00:00",
+      "limited_at": "2026-05-23T10:21:23.581405+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "9520226488": {
+      "status": "limited",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": null,
+      "limited_at": "2026-05-23T10:36:19.877795+00:00",
+      "error": null,
+      "retries": 0
+    },
+    "8101000835": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:27.478657+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "8917202119": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:30.477373+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "9019223196": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:32.515870+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "9321238311": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:48.663455+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "9521238629": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:47:50.042819+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 3
+    },
+    "7797079270": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:32:30.189567+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "9117199721": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:34.586752+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "8311136309": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:30.830915+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "9111160460": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:33.596042+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "8504099089": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:40.559993+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "8620226550": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:52.771025+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "7696068116": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T18:59:22.061414+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "7696116283": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:12.953941+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "9017200035": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:31.572700+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "9321238485": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:43.370120+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "9221238560": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:39.947688+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "8302078558": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T17:35:39.402399+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "9220227663": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T18:54:21.344882+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "9321238417": {
+      "status": "active",
+      "login_ok": true,
+      "test_ok": true,
+      "last_tested": "2026-05-22T19:01:13.160114+00:00",
+      "limited_at": null,
+      "error": null,
+      "retries": 0
+    },
+    "9220226309": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:37.455433+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 16
+    },
+    "7293057776": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:07.799520+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "7297009319": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:08.915547+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "9320227219": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:42:47.600246+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    },
+    "7796013919": {
+      "status": "failed",
+      "login_ok": false,
+      "test_ok": false,
+      "last_tested": "2026-05-23T10:48:23.399418+00:00",
+      "limited_at": null,
+      "error": "failed_login",
+      "retries": 17
+    }
+  }
+}
