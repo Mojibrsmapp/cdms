@@ -90,6 +90,7 @@ def pool_stats():
 
 
 @app.route('/api/pool/reset', methods=['POST'])
+@app.route('/api/pool/reset', methods=['POST'])
 def pool_reset():
     """লাইভ সেলেনিয়াম ড্রাইভার পুলের লিমিট এবং ট্র্যাকিং মেমোরি ১০০% রিসেট করার রুট"""
     key = request.args.get('key', '')
@@ -101,35 +102,29 @@ def pool_reset():
         with open("disabled_creds.json", "w", encoding="utf-8") as f:
             json.dump({}, f)
         
-        # মেমোরিতে আটকে থাকা সেশন অবজেক্ট ও লিমিটেড একাউন্ট ট্র্যাকার রিলিজ করা
+        # মেমোরি এবং ওল্ড ড্রাইভার ক্লিয়ার করা
         with _pool._condition:
             _pool._disabled = {}
             _pool._cred_idx = 0
             for e in _pool._pool:
-                e['limit'] = False
-                e['in_use'] = False
-                e['verified'] = False
-                try:
-                    e['driver'].quit()
-                except Exception:
-                    pass
+                try: e['driver'].quit()
+                except Exception: pass
             _pool._pool = []
             
-            # 💡 local_get_credentials ফাংশন ম্যাপ করে স্কোপ এরর ফিক্স করা
             base = [c for c in local_get_credentials() if c.get('active', True)]
             _pool._creds = [c for c in base for _ in range(1)]
-            
             _pool._condition.notify_all()
         
-        # রিসেট শেষ হওয়ার সাথে সাথেই ব্যাকগ্রাউন্ড ব্রাউজার উইন্ডোগুলো পুনরায় ওয়ার্ম-আপ করা
-        start_workers(n=2) 
+        # 💡 রিসেটের সাথে সাথেই ফোর্সড প্রি-ওয়ার্ম সেশন কল করা
+        print("🔄 Pool reset requested. Re-triggering workers and prewarm...")
+        start_workers(n=2)
+        _pool.prewarm(count=1)
         
         return jsonify({
             "success": True, 
             "message": "Selenium Browser Pool limits reset completely and fresh background instances triggered."
         })
     except Exception as e:
-        print(f"Reset Error: {e}")
         return jsonify({"success": False, "error": str(e)}), 500
 
 
