@@ -82,7 +82,7 @@ def pool_stats():
 
 @app.route('/api/pool/reset', methods=['POST'])
 def pool_reset():
-    """💡 লাইভ সেলেনিয়াম ড্রাইভার পুলের লিমিট এবং ট্র্যাকিং মেমোরি ১০০% রিসেট করার রুট"""
+    """লাইভ সেলেনিয়াম ড্রাইভার পুলের লিমিট এবং ট্র্যাকিং মেমোরি ১০০% রিসেট করার রুট"""
     key = request.args.get('key', '')
     if key != API_KEY:
         return jsonify({"success": False, "error": "Invalid API key"}), 401
@@ -92,7 +92,7 @@ def pool_reset():
         with open("disabled_creds.json", "w", encoding="utf-8") as f:
             json.dump({}, f)
         
-        # 💡 মেমোরিতে আটকে থাকা সেশন অবজেক্ট ও লিমিটেড একাউন্ট ট্র্যাকার রিলিজ করা
+        # মেমোরিতে আটকে থাকা সেশন অবজেক্ট ও লিমিটেড একাউন্ট ট্র্যাকার রিলিজ করা
         with _pool._condition:
             _pool._disabled = {}
             _pool._cred_idx = 0
@@ -105,13 +105,23 @@ def pool_reset():
                 except Exception:
                     pass
             _pool._pool = []
+            
+            # 💡 নতুন করে ব্রাউজার পুলের ট্র্যাকার রিসেট করা
+            if hasattr(_pool, '_creds'):
+                base = [c for c in get_credentials_list() if c.get('active', True)]
+                _pool._creds = [c for c in base for _ in range(1)]
+            
             _pool._condition.notify_all()
+        
+        # 🚨 অত্যন্ত গুরুত্বপূর্ণ: রিসেট শেষ হওয়ার সাথে সাথেই ব্যাকগ্রাউন্ড ব্রাউজার উইন্ডোগুলো পুনরায় চালু করা
+        start_workers(n=2) 
         
         return jsonify({
             "success": True, 
-            "message": "Selenium Browser Automation Pool limits and background instances reset completely."
+            "message": "Selenium Browser Pool limits reset completely and fresh background instances triggered."
         })
     except Exception as e:
+        print(f"Reset Error: {e}")
         return jsonify({"success": False, "error": str(e)}), 500
 
 
