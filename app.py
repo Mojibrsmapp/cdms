@@ -5,7 +5,7 @@ import time
 import json
 import threading
 
-# 💡 ওল্ড cdms_fast পুল সম্পূর্ণ বাদ দিয়ে নতুন cdms_script এর ওয়ার্কার ও পুল অবজেক্ট ইম্পোর্ট করা
+# cdms_script থেকে প্রয়োজনীয় ফাংশন ও গ্লোবাল পুল অবজেক্ট ইম্পোর্ট করা
 from cdms_script import login_cdms_with_limit, start_workers, _pool, cache_get, cache_set
 
 app = Flask(__name__)
@@ -17,6 +17,15 @@ os.makedirs(CACHE_DIR, exist_ok=True)
 
 # ─── Configuration ────────────────────────────────────────────────────────────
 _cache_enabled = True  # ক্লাউডে ডেপ্লয়মেন্টের জন্য ক্যাশ ডিফল্ট True রাখা হলো
+
+
+# ─── Credentials Helper Inside App ────────────────────────────────────────────
+def local_get_credentials():
+    try:
+        with open("accounts.json", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
 
 
 # ─── Routes ───────────────────────────────────────────────────────────────────
@@ -49,7 +58,7 @@ def search_nid():
                     "duration": {"total_seconds": 0}
                 })
 
-        # 💡 নতুন থ্রেড-বেসড সেলেনিয়াম কিউ স্ক্রিপ্ট এক্সিকিউট করা
+        # থ্রেড-বেসড সেলেনিয়াম কিউ স্ক্রিপ্ট এক্সিকিউট করা
         res = login_cdms_with_limit(nid, dob)
         
         if res.get("success"):
@@ -106,14 +115,13 @@ def pool_reset():
                     pass
             _pool._pool = []
             
-            # 💡 নতুন করে ব্রাউজার পুলের ট্র্যাকার রিসেট করা
-            if hasattr(_pool, '_creds'):
-                base = [c for c in get_credentials_list() if c.get('active', True)]
-                _pool._creds = [c for c in base for _ in range(1)]
+            # 💡 local_get_credentials ফাংশন ম্যাপ করে স্কোপ এরর ফিক্স করা
+            base = [c for c in local_get_credentials() if c.get('active', True)]
+            _pool._creds = [c for c in base for _ in range(1)]
             
             _pool._condition.notify_all()
         
-        # 🚨 অত্যন্ত গুরুত্বপূর্ণ: রিসেট শেষ হওয়ার সাথে সাথেই ব্যাকগ্রাউন্ড ব্রাউজার উইন্ডোগুলো পুনরায় চালু করা
+        # রিসেট শেষ হওয়ার সাথে সাথেই ব্যাকগ্রাউন্ড ব্রাউজার উইন্ডোগুলো পুনরায় ওয়ার্ম-আপ করা
         start_workers(n=2) 
         
         return jsonify({
@@ -155,8 +163,5 @@ def cache_clear():
 
 if __name__ == '__main__':
     print("Starting Server — Selenium Browser Automation Mode")
-    
-    # 💡 ক্লাউড সার্ভার চালুর সময় ব্যাকগ্রাউন্ড ওয়ার্কার ও ব্রাউজার প্রি-ওয়ার্ম শুরু করা
     start_workers(n=2) 
-    
     app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
