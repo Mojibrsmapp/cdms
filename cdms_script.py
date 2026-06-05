@@ -17,11 +17,11 @@ import time
 from datetime import datetime
 
 # ─── Config ─────────────────────────────────────────────────────────────────
-MAX_QUEUE_SIZE       = 50  # max API requests waiting in queue before rejection
+MAX_QUEUE_SIZE       = 50  
 HEADLESS             = True
-BROWSERS_PER_ACCOUNT = 1    # কমানো হলো যাতে ক্লাউড সার্ভারে মেমোরি ক্র্যাশ না হয়
-PREWARM_COUNT        = 0    # শুরুতে সব আইডি একসাথে হিট করবে না
-MAX_BROWSERS         = 2    # রেন্ডার ফ্রি প্ল্যানের জন্য ২-এর বেশি ব্রাউজার দেওয়া যাবে না
+BROWSERS_PER_ACCOUNT = 1    
+PREWARM_COUNT        = 1    # 💡 এটি '0' থেকে পরিবর্তন করে '1' করুন (যাতে সার্ভার চালুর সাথে সাথেই ব্রাউজার ওপেন হয়)
+MAX_BROWSERS         = 2    # 💡 এটি ২ রাখুন
 
 CACHE_DIR           = "cache"
 UPLOAD_DIR          = "uploads"
@@ -474,8 +474,16 @@ class BrowserPool:
         return True
 
     def prewarm(self, count=PREWARM_COUNT):
+        """ব্যাকগ্রাউন্ডে সচল ব্রাউজার সেশন রেডি রাখার লজিক"""
         if count <= 0: return
-        safe_print("Prewarm skipped or set to 0 based on Tor optimization config.")
+        safe_print(f"Prewarm: initializing {count} active browser connection...")
+        with self._condition:
+            if len(self._pool) < MAX_BROWSERS:
+                try:
+                    entry = self._create_entry()
+                    threading.Thread(target=self._ensure_logged_in, args=(entry,), daemon=True).start()
+                except Exception as e:
+                    safe_print(f"Prewarm launch error: {e}")
 
     def acquire(self, timeout=120):
         deadline = time.time() + timeout
