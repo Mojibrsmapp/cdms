@@ -17,11 +17,12 @@ import time
 from datetime import datetime
 
 # ─── Config ─────────────────────────────────────────────────────────────────
-HEADLESS            = True
-BROWSERS_PER_ACCOUNT = 10   # parallel browsers per account (each gets own APEX session)
-PREWARM_COUNT        = BROWSERS_PER_ACCOUNT  # pre-login all slots at startup
-MAX_BROWSERS         = BROWSERS_PER_ACCOUNT * 10  # upper cap across all accounts
 MAX_QUEUE_SIZE       = 50  # max API requests waiting in queue before rejection
+HEADLESS            = True
+BROWSERS_PER_ACCOUNT = 1    # 💡 ১০ থেকে কমিয়ে ১ করুন (একসাথে বেশি ব্রাউজার ওপেন হবে না)
+PREWARM_COUNT        = 0    # 💡 এটি ০ করে দিন, শুরুতে সব আইডি একসাথে লগইন করার চেষ্টা করবে না
+MAX_BROWSERS         = 2    # 💡 ক্যাপ কমিয়ে দিন যাতে সার্ভারের ওপর চাপ না পড়ে
+
 
 CACHE_DIR           = "cache"
 UPLOAD_DIR          = "uploads"
