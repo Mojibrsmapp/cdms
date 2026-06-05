@@ -80,14 +80,11 @@ def safe_print(text):
 # ─── Credentials ────────────────────────────────────────────────────────────
 
 def get_credentials_list():
-    return [
-
-{'username': '9220226309', 'password': 'Cdms@5678', 'active': True},
-{'username': '7293057776', 'password': 'Aziz@1972', 'active': True},
-{'username': '7297009319', 'password': 'Habib123@', 'active': True},
-{'username': '9320227219', 'password': 'December@2025', 'active': True},
-{'username': '7796013919', 'password': 'Safar@1977', 'active': True}
-    ]
+    try:
+        with open("accounts.json", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
 
 
 
