@@ -474,16 +474,25 @@ class BrowserPool:
         return True
 
     def prewarm(self, count=PREWARM_COUNT):
-        """ব্যাকগ্রাউন্ডে সচল ব্রাউজার সেশন রেডি রাখার লজিক"""
+        """মেমোরি লক বাইপাস করে সরাসরি ব্রাউজার পুল ইনিশিয়ালাইজ করার লজিক"""
         if count <= 0: return
-        safe_print(f"Prewarm: initializing {count} active browser connection...")
-        with self._condition:
-            if len(self._pool) < MAX_BROWSERS:
-                try:
-                    entry = self._create_entry()
-                    threading.Thread(target=self._ensure_logged_in, args=(entry,), daemon=True).start()
-                except Exception as e:
-                    safe_print(f"Prewarm launch error: {e}")
+        safe_print(f"🌟 [Prewarm] Initializing {count} background browser connection via Tor...")
+        
+        def _bg_init():
+            try:
+                # সরাসরি একটি ফ্রেশ এন্ট্রি তৈরি করে পুলে পুশ করা
+                entry = self._create_entry()
+                ok = self._ensure_logged_in(entry)
+                if ok:
+                    entry['verified'] = True
+                    safe_print(f"✅ [Prewarm] Background Browser Session Ready: {entry['cred']['username']}")
+                else:
+                    with self._condition:
+                        self._retire(entry, "prewarm startup login failed")
+            except Exception as e:
+                safe_print(f"❌ [Prewarm] Startup Error: {e}")
+                
+        threading.Thread(target=_bg_init, daemon=True).start()
 
     def acquire(self, timeout=120):
         deadline = time.time() + timeout
