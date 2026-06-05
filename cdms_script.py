@@ -28,8 +28,6 @@ UPLOAD_DIR          = "uploads"
 DISABLED_FILE       = "disabled_creds.json"
 SUCCESS_COUNTS_FILE = "success_counts.json"
 
-TEST_NID = "6932271742"
-TEST_DOB = "2005-01-01"
 
 for d in (CACHE_DIR, UPLOAD_DIR):
     os.makedirs(d, exist_ok=True)
@@ -551,11 +549,12 @@ def _process_request(entry, nid, dob):
     if not entry['logged_in']:
         if not _pool._ensure_logged_in(entry): return None, "login_failed"
 
-    if not entry.get('verified'):
-        verdict = _verify_account(entry)
-        if verdict == 'limit': return None, "search_limit_exceeded"
-        elif verdict == 'error': return None, "login_failed"
-        entry['verified'] = True
+    # 💡 এই ৩টি লাইন কেটে দিন অথবা আগে '#' দিয়ে কমেন্ট করে বন্ধ করুন:
+    # if not entry.get('verified'):
+    #     verdict = _verify_account(entry)
+    #     if verdict == 'limit': return None, "search_limit_exceeded"
+    #     elif verdict == 'error': return None, "login_failed"
+    #     entry['verified'] = True
 
     try:
         return _search_in_session(entry, nid, dob)
