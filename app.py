@@ -161,7 +161,22 @@ def cache_clear():
     return jsonify({"success": True, "deleted": count})
 
 
+# 💡 আগের ৪ লাইনের 'if __name__ == "__main__":' কেটে দিয়ে নিচের এই কোডটুকু প্রতিস্থাপন করুন
+
+def run_background_workers():
+    """Flask সার্ভার চালু হওয়ার পর সম্পূর্ণ স্বাধীন থ্রেডে ওয়ার্কার স্টার্ট করা"""
+    time.sleep(3)  # সার্ভার পোর্ট বাইন্ড হওয়ার জন্য সামান্য অপেক্ষা
+    print("🚀 [Background] Triggering Selenium Workers and Prewarm Session...")
+    try:
+        start_workers(n=2)
+    except Exception as e:
+        print(f"Worker Trigger Error: {e}")
+
 if __name__ == '__main__':
     print("Starting Server — Selenium Browser Automation Mode")
-    start_workers(n=2) 
+    
+    # 💡 Flask-এর মেইন লুপের বাইরে সম্পূর্ণ স্বাধীন এবং ডিট্যাচড থ্রেডে ওয়ার্কার পাঠানো
+    threading.Thread(target=run_background_workers, daemon=True).start()
+    
+    # Flask সার্ভার স্টার্ট
     app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
