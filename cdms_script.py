@@ -126,16 +126,23 @@ def create_driver():
     opts.add_argument('--window-size=1280,720')
     opts.add_argument('--disable-blink-features=AutomationControlled')
     
-    # 💡 Docker + Tor নেটওয়ার্ক লোকালহোস্ট গেটওয়ে পোর্ট
+    # Tor প্রক্সি লোকালহোস্টে কানেক্ট করা
     opts.add_argument('--proxy-server=socks5://127.0.0.1:9050')
+    
+    # 💡 লিনাক্স ক্রোমিয়ামের মূল বাইনারি পাথ
     opts.binary_location = "/usr/bin/chromium"
     
     opts.add_argument(f'--user-agent={_UA}')
     opts.add_experimental_option("excludeSwitches", ["enable-automation"])
     opts.add_experimental_option('useAutomationExtension', False)
     
+    # 💡 ওল্ড Service পাথ মেকানিজম বাদ দিয়ে লিনাক্স এনভায়রনমেন্টকে স্বয়ংক্রিয়ভাবে ড্রাইভার অবটেন করতে দেওয়া
     from selenium.webdriver.chrome.service import Service
-    service = Service(executable_path="/usr/bin/chromium-driver")
+    from selenium.webdriver.common.selenium_manager import SeleniumManager
+    
+    # ডকার কন্টেইনারের জন্য ডিরেক্ট সার্ভিস ইনিশিয়ালিজেশন
+    service = Service()
+    
     driver = webdriver.Chrome(service=service, options=opts)
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     return driver
