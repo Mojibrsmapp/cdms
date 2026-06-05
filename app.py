@@ -169,3 +169,7 @@ if __name__ == '__main__':
     start_workers(n=2) 
     
     app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
+
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"success": True, "message": "Welcome! CDMS Cloud API Server is Live."})
