@@ -121,24 +121,23 @@ def cache_set(nid, dob, data):
 def create_driver():
     from selenium.webdriver.chrome.options import Options
     opts = Options()
-    if HEADLESS:
-        opts.add_argument('--headless=new')
+    
+    opts.add_argument('--headless=new') 
     opts.add_argument('--no-sandbox')
     opts.add_argument('--disable-dev-shm-usage')
     opts.add_argument('--disable-gpu')
     opts.add_argument('--window-size=1280,720')
     opts.add_argument('--disable-blink-features=AutomationControlled')
-    opts.add_argument('--disable-extensions')
-    opts.add_argument('--disable-notifications')
-    opts.add_argument('--no-first-run')
-    opts.add_argument('--mute-audio')
-    opts.add_argument(f'--user-agent={_UA}')
-    opts.add_experimental_option("excludeSwitches", ["enable-automation"])
-    opts.add_experimental_option('useAutomationExtension', False)
-    driver = webdriver.Chrome(options=opts)
-    driver.execute_script(
-        "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-    driver.execute_cdp_cmd('Network.setUserAgentOverride', {"userAgent": _UA})
+    
+    # 💡 এই লাইনটি যোগ করুন: Tor প্রক্সি লোকালহোস্টে কানেক্ট করা
+    opts.add_argument('--proxy-server=socks5://127.0.0.1:9050')
+    
+    opts.binary_location = "/usr/bin/chromium"
+    
+    # বাকি কোড আগের মতোই থাকবে...
+    from selenium.webdriver.chrome.service import Service
+    service = Service(executable_path="/usr/bin/chromium-driver")
+    driver = webdriver.Chrome(service=service, options=opts)
     return driver
 
 
