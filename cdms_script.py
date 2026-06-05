@@ -123,28 +123,31 @@ def create_driver():
     opts.add_argument('--no-sandbox')
     opts.add_argument('--disable-dev-shm-usage')
     opts.add_argument('--disable-gpu')
-    opts.add_argument('--window-size=1280,720')
-    opts.add_argument('--disable-blink-features=AutomationControlled')
+    opts.add_argument('--window-size=1920,1080') # স্ক্রিন সাইজ স্ট্যান্ডার্ড করা হলো
     
-    # Tor প্রক্সি লোকালহোস্টে কানেক্ট করা
-    opts.add_argument('--proxy-server=socks5://127.0.0.1:9050')
+    # 💡 Tor প্রক্সির কারণে মেমোরি ক্র্যাশ হওয়ায় এই লাইনটি আমরা সম্পূর্ণ বন্ধ (Comment) করে দিচ্ছি
+    # opts.add_argument('--proxy-server=socks5://127.0.0.1:9050')
     
-    # 💡 লিনাক্স ক্রোমিয়ামের মূল বাইনারি পাথ
     opts.binary_location = "/usr/bin/chromium"
     
-    opts.add_argument(f'--user-agent={_UA}')
+    # 🚨 অত্যন্ত গুরুত্বপূর্ণ: ক্লাউড আইপি লুকাতে শক্তিশালী রিয়ালিস্টিক ব্রাউজার হেডার ও মাস্কিং যোগ করা
+    opts.add_argument('--disable-web-security')
+    opts.add_argument('--allow-running-insecure-content')
+    opts.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36')
+    opts.add_argument('--disable-blink-features=AutomationControlled')
+    
     opts.add_experimental_option("excludeSwitches", ["enable-automation"])
     opts.add_experimental_option('useAutomationExtension', False)
     
-    # 💡 ওল্ড Service পাথ মেকানিজম বাদ দিয়ে লিনাক্স এনভায়রনমেন্টকে স্বয়ংক্রিয়ভাবে ড্রাইভার অবটেন করতে দেওয়া
     from selenium.webdriver.chrome.service import Service
-    from selenium.webdriver.common.selenium_manager import SeleniumManager
-    
-    # ডকার কন্টেইনারের জন্য ডিরেক্ট সার্ভিস ইনিশিয়ালিজেশন
     service = Service()
     
     driver = webdriver.Chrome(service=service, options=opts)
+    
+    # সরকারি ফায়ারওয়াল বাইপাস করার জন্য জাভাস্ক্রিপ্ট ফিঙ্গারপ্রিন্ট ক্লিনআপ
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    driver.execute_script("abs = () => { return { webdriver: undefined, languages: ['en-US', 'en'] } };")
+    
     return driver
 
 
